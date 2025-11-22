@@ -14,7 +14,7 @@ BEGIN;
 		SELECT u.is_admin
 			INTO admin_calling
 			FROM public.users u
-			WHERE u."ID"=id_calling_user;
+			WHERE u.id=id_calling_user;
 		IF admin_calling OR id_calling_user=id_user THEN
 			SELECT COUNT(*)
 				INTO completed
@@ -39,10 +39,10 @@ END;
 BEGIN;
 	
 	CREATE OR REPLACE FUNCTION see_own_tasks (id_calling_user int)
-	RETURNS TABLE("assignment" text, completed boolean) AS $$
+	RETURNS TABLE(assignment text, completed boolean) AS $$
 	BEGIN
 		RETURN QUERY
-		SELECT t."assignment", t.completed
+		SELECT t.assignment, t.completed
 			FROM public.tasks t
 			WHERE t.user_id = id_calling_user;
 	END;
@@ -89,11 +89,11 @@ BEGIN;
 		SELECT u.is_admin
 			INTO admin_calling
 			FROM public.users u
-			WHERE u."ID"=id_calling_user;
+			WHERE u.id=id_calling_user;
 		IF admin_calling THEN
 			SELECT nextval(pg_get_serial_sequence('tasks', 'task_id'))
 				INTO current_id;
-			INSERT INTO public.tasks ("task_id", "assignment")
+			INSERT INTO public.tasks (task_id, assignment)
 				VALUES (current_id, task_assignment);
 		ELSE
 			RAISE 'User without admin capabilities trying to create new task';
@@ -111,7 +111,7 @@ BEGIN;
 		SELECT u.is_admin
 			INTO admin_calling
 			FROM public.users u
-			WHERE u."ID"=id_calling_user;
+			WHERE u.id=id_calling_user;
 		IF admin_calling THEN
 			SELECT t.assigned
 				INTO is_assigned
@@ -138,7 +138,7 @@ BEGIN;
 		SELECT u.is_admin
 			INTO admin_calling
 			FROM public.users u
-			WHERE u."ID"=id_calling_user;
+			WHERE u.id=id_calling_user;
 		IF admin_calling THEN
 			SELECT t.assigned
 				INTO already_assigned
@@ -168,7 +168,7 @@ BEGIN;
 		SELECT u.is_admin
 			INTO admin_calling
 			FROM public.users u
-			WHERE u."ID"=id_calling_user;
+			WHERE u.id=id_calling_user;
 		IF admin_calling THEN
 			SELECT COUNT(*)
 				INTO completed

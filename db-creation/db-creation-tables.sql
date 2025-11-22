@@ -4,10 +4,10 @@ BEGIN;
 
 CREATE TABLE IF NOT EXISTS public."users"
 (
-    "ID" serial,
+    id serial,
     is_admin boolean,
-    "name" text,
-    PRIMARY KEY ("ID")
+    name text,
+    PRIMARY KEY (id)
 );
 
 COMMENT ON TABLE public."users"
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS public.tasks
     user_id integer,
     completed boolean DEFAULT false,
     assigned boolean DEFAULT false,
-    "assignment" text,
+    assignment text,
 	PRIMARY KEY (task_id)
 );
 
@@ -28,7 +28,7 @@ COMMENT ON TABLE public.tasks
 
 ALTER TABLE IF EXISTS public.tasks
     ADD FOREIGN KEY (user_id)
-    REFERENCES public."users" ("ID") MATCH SIMPLE
+    REFERENCES public."users" (id) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;

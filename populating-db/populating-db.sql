@@ -3,7 +3,7 @@ DELETE FROM public.tasks;
 DELETE FROM public.users;
 
 BEGIN;
-INSERT INTO public.users ("ID", is_admin, "name")
+INSERT INTO public.users (id, is_admin, name)
 	VALUES 
 	(1, true, 'admin'),
 	(2, false, 'normal_user'),
@@ -11,7 +11,7 @@ INSERT INTO public.users ("ID", is_admin, "name")
 COMMIT;
 
 BEGIN;
-INSERT INTO public.tasks (user_id, completed, assigned, "assignment")
+INSERT INTO public.tasks (user_id, completed, assigned, assignment)
 	VALUES
 	(1, true, true, 'First assignment'),
 	(1, true, true, 'Second assignment'),
