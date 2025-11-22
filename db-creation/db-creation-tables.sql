@@ -5,7 +5,7 @@ BEGIN;
 CREATE TABLE IF NOT EXISTS public."users"
 (
     id serial,
-    is_admin boolean,
+    admin boolean,
     name text,
     PRIMARY KEY (id)
 );

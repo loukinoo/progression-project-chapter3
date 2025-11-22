@@ -11,7 +11,7 @@ BEGIN;
 		total int;
 		admin_calling boolean;
 	BEGIN
-		SELECT u.is_admin
+		SELECT u.admin
 			INTO admin_calling
 			FROM public.users u
 			WHERE u.id=id_calling_user;
@@ -86,7 +86,7 @@ BEGIN;
 		admin_calling boolean;
 		current_id int;
 	BEGIN
-		SELECT u.is_admin
+		SELECT u.admin
 			INTO admin_calling
 			FROM public.users u
 			WHERE u.id=id_calling_user;
@@ -108,7 +108,7 @@ BEGIN;
 		is_assigned boolean;
 		admin_calling boolean;
 	BEGIN
-		SELECT u.is_admin
+		SELECT u.admin
 			INTO admin_calling
 			FROM public.users u
 			WHERE u.id=id_calling_user;
@@ -135,7 +135,7 @@ BEGIN;
 		admin_calling boolean;
 		already_assigned boolean;
 	BEGIN
-		SELECT u.is_admin
+		SELECT u.admin
 			INTO admin_calling
 			FROM public.users u
 			WHERE u.id=id_calling_user;
@@ -165,7 +165,7 @@ BEGIN;
 		assigned int;
 		percentage double precision;
 	BEGIN
-		SELECT u.is_admin
+		SELECT u.admin
 			INTO admin_calling
 			FROM public.users u
 			WHERE u.id=id_calling_user;

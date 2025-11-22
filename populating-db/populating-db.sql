@@ -3,7 +3,7 @@ DELETE FROM public.tasks;
 DELETE FROM public.users;
 
 BEGIN;
-INSERT INTO public.users (id, is_admin, name)
+INSERT INTO public.users (id, admin, name)
 	VALUES 
 	(1, true, 'admin'),
 	(2, false, 'normal_user'),
