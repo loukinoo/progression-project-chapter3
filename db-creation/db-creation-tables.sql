@@ -6,7 +6,8 @@ CREATE TABLE IF NOT EXISTS public."users"
 (
     id serial,
     admin boolean,
-    name text,
+    username text,
+    password text,
     PRIMARY KEY (id)
 );
 
